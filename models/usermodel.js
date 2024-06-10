@@ -1,0 +1,16 @@
+const mongoose = require("mongoose");
+
+const Schema = mongoose.Schema;
+
+const UserSchema = new Schema({
+  firstName: { type: String, required: true },
+  lastName: { type: String, required: true },
+  messages: [Schema.Types.ObjectId],
+  admin: { type: Boolean },
+  email: { type: String, required: true },
+  password: { type: String },
+  hash: { type: String },
+  salt: { type: String },
+});
+
+module.exports = mongoose.model("UserModel", UserSchema);
