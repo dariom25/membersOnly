@@ -8,9 +8,7 @@ const UserSchema = new Schema({
   messages: [{ type: Schema.Types.ObjectId, ref: "Message" }],
   admin: { type: Boolean },
   email: { type: String, required: true },
-  password: { type: String },
-  hash: { type: String },
-  salt: { type: String },
+  password: { type: String }
 });
 
 module.exports = mongoose.model("UserModel", UserSchema);
