@@ -34,7 +34,8 @@ exports.createUserPost = [
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         messages: [],
-        admin: req.body.admin === "Yes" ? true : false,
+        admin: false,
+        member: false,
         email: req.body.email,
         password: securedPassword
     })
@@ -43,7 +44,7 @@ exports.createUserPost = [
         res.render("registration")
     } else {
       await user.save()
-      res.redirect("/")
+      res.redirect(user.url) //seite muss noch erstellt werden
     }
   })
 ];
