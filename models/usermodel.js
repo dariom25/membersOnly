@@ -7,6 +7,7 @@ const UserSchema = new Schema({
   lastName: { type: String, required: true },
   messages: [{ type: Schema.Types.ObjectId, ref: "Message" }],
   admin: { type: Boolean },
+  member: {type: Boolean},
   email: { type: String, required: true },
   password: { type: String },
 });
