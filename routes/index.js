@@ -11,4 +11,6 @@ router.get("/registration", userController.createUserGet);
 
 router.post("/registration", userController.createUserPost);
 
+router.get("/registrationSuccess", userController.successfullRegistrationGet)
+
 module.exports = router;
