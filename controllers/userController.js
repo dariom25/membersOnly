@@ -44,7 +44,7 @@ exports.createUserPost = [
         res.render("registration")
     } else {
       await user.save()
-      res.redirect(user.url) //seite muss noch erstellt werden
+      res.redirect("registrationSuccess")
     }
   })
 ];
