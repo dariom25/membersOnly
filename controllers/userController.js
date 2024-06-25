@@ -21,7 +21,7 @@ exports.createUserPost = [
     })
     .trim()
     .escape(),
-  body("password").trim().escape(),
+  body("password").isLength({ min: 1 }).trim().escape(),
   body("cpassword")
     .custom((value, { req }) => {
       return value === req.body.password;
