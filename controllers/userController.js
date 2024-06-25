@@ -47,7 +47,7 @@ exports.createUserPost = [
     });
 
     if (!errors.isEmpty()) {
-      res.render("registration");
+      res.render("registration", errors);
     } else {
       await user.save();
       res.redirect("registrationSuccess");
