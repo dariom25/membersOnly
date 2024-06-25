@@ -23,4 +23,12 @@
     <button type="submit">Submit</button>
   </form>
 
-  <%# erorrs müssen displayed werden und values zum zurücksetzen der Werte bei fehlern eingebaut werden %>
+  <% if (errors) { %>
+    <ul>
+      <% errors.forEach(error => { %>
+        <% console.log(error)%>
+        <li><%=error.msg%></li>
+      <% }) %>
+    </ul>
+  <% } %>
+
