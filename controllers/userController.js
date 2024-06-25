@@ -21,7 +21,7 @@ exports.createUserPost = [
     })
     .trim()
     .escape(),
-  body("password").isLength({ min: 1 }).trim().escape(),
+  body("password").isLength({ min: 1 }).withMessage("Password needs to be at least 1 character").trim().escape(),
   body("cpassword")
     .custom((value, { req }) => {
       return value === req.body.password;
