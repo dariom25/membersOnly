@@ -54,7 +54,7 @@ passport.use(
       if (!user) {
         return done(null, false, { message: "Incorrect username" });
       }
-      const match = bcryptjs.compare(passport, user.password); // könnte fehler geben, weil das ne async function ist
+      const match = await bcryptjs.compare(password, user.password);
       if (!match) {
         return done(null, false, { message: "Incorrect password" });
       }
