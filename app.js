@@ -4,7 +4,6 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const session = require("express-session");
-const MongoStore = require("connect-mongo");
 const User = require("./models/usermodel");
 const bcryptjs = require("bcryptjs");
 const passport = require("passport");
@@ -35,7 +34,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/", indexRouter);
 
 //express-session setup
 app.use(
@@ -46,6 +44,8 @@ app.use(
   })
 );
 app.use(passport.session());
+
+app.use("/", indexRouter);
 
 //authenticate user
 passport.use(
