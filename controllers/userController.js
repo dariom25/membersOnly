@@ -75,3 +75,7 @@ exports.logOutUserGet = (req, res, next) => {
     res.redirect("/");
   });
 }
+
+exports.dashboardGet = asyncHandler(async(req, res, next) => {
+  res.render("dashboard");
+})
