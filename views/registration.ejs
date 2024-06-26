@@ -1,34 +1,43 @@
-<h1>Registration</h1>
-<form action="" method="post" class="form">
-    <div class="form-field">
-      <label for="firstName">First Name:</label>
-      <input type="text" name="firstName" id="firstName">
-    </div>
-    <div class="form-field">
-      <label for="lastName">Last Name:</label>
-      <input type="text" name="lastName" id="lastName">
-    </div>
-    <div class="form-field">
-      <label for="email">Email:</label>
-      <input type="email" name="email" id="email">
-    </div>
-    <div class="form-field">
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration</title>
+  </head>
+  <body>
+    <h1>Registration</h1>
+    <form action="" method="post" class="form">
+      <div class="form-field">
+        <label for="firstName">First Name:</label>
+        <input type="text" name="firstName" id="firstName" />
+      </div>
+      <div class="form-field">
+        <label for="lastName">Last Name:</label>
+        <input type="text" name="lastName" id="lastName" />
+      </div>
+      <div class="form-field">
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" />
+      </div>
+      <div class="form-field">
         <label for="password">Password:</label>
-        <input type="password" name="password" id="password">
-    </div>
-    <div class="form-field">
-      <label for="cpassword">Confirm password:</label>
-      <input type="password" name="cpassword" id="cpassword">
-  </div>
-    <button type="submit">Submit</button>
-  </form>
+        <input type="password" name="password" id="password" />
+      </div>
+      <div class="form-field">
+        <label for="cpassword">Confirm password:</label>
+        <input type="password" name="cpassword" id="cpassword" />
+      </div>
+      <button type="submit">Submit</button>
+    </form>
 
-  <% if (errors) { %>
+    <% if (typeof errors !== 'undefined' && errors.length > 0) { %>
+
     <ul>
       <% errors.forEach(error => { %>
-        <% console.log(error)%>
-        <li><%=error.msg%></li>
+      <li><%=error.msg%></li>
       <% }) %>
     </ul>
-  <% } %>
-
+    <% } %>
+  </body>
+</html>
