@@ -59,7 +59,6 @@ exports.successfullRegistrationGet = asyncHandler(async (req, res, next) => {
   res.render("registrationSuccess");
 });
 
-
 exports.logInUserGet = asyncHandler(async (req, res, next) => {
   res.render("login")
 })
