@@ -7,6 +7,7 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const User = require("./models/usermodel");
 const bcryptjs = require("bcryptjs");
+const passport = require("passport");
 require("dotenv").config();
 
 const indexRouter = require("./routes/index");
@@ -15,7 +16,6 @@ const app = express();
 
 //mongoose setup
 const mongoose = require("mongoose");
-const passport = require("passport");
 mongoose.set("strictQuery", false);
 const mongoDB = `mongodb+srv://dario:${process.env.DATABASE_KEY}@cluster0.uuebfsm.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
 
