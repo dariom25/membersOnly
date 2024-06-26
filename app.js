@@ -8,6 +8,7 @@ const MongoStore = require("connect-mongo");
 const User = require("./models/usermodel");
 const bcryptjs = require("bcryptjs");
 const passport = require("passport");
+const LocalStrategy = require("passport-local").Strategy;
 require("dotenv").config();
 
 const indexRouter = require("./routes/index");
