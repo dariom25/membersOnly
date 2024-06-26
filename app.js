@@ -39,7 +39,7 @@ app.use("/", indexRouter);
 //express-session setup
 app.use(
   session({
-    secret: "secret",
+    secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true,
   })
