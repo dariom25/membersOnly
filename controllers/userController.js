@@ -2,6 +2,7 @@ const User = require("../models/usermodel");
 const asyncHandler = require("express-async-handler");
 const { body, validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
+const passport = require("passport")
 
 exports.createUserGet = asyncHandler(async (req, res, next) => {
   res.render("registration");
@@ -27,8 +28,6 @@ exports.createUserPost = [
       return value === req.body.password;
     })
     .withMessage("Passwords need to match."),
-
-  body("admin.*").escape(),
 
   asyncHandler(async (req, res, next) => {
     const errors = validationResult(req);
@@ -61,4 +60,9 @@ exports.successfullRegistrationGet = asyncHandler(async (req, res, next) => {
 
 exports.logInUserGet = asyncHandler(async (req, res, next) => {
   res.render("login")
+})
+
+exports.logInUserPost = passport.authenticate("local", {
+  successRedirect: "dashboard",
+  failureRedirect: "login"
 })
