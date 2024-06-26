@@ -54,7 +54,7 @@ passport.use(
       if (!user) {
         return done(null, false, { message: "Incorrect username" });
       }
-      const match = bcryptjs.compare(passport, user.password);
+      const match = bcryptjs.compare(passport, user.password); // könnte fehler geben, weil das ne async function ist
       if (!match) {
         return done(null, false, { message: "Incorrect password" });
       }
@@ -64,6 +64,19 @@ passport.use(
     }
   })
 );
+
+passport.serializeUser((user, done) => {
+  done(null, user.id);
+});
+
+passport.deserializeUser(async (id, done) => {
+  try {
+    const user = await User.findById(id);
+    done(null, user);
+  } catch (err) {
+    done(err);
+  }
+});
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
