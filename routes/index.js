@@ -21,4 +21,6 @@ router.get("/log-out", userController.logOutUserGet);
 
 router.get("/dashboard", userController.dashboardGet);
 
+router.post("/dashboard", userController.setMemberStatusPost)
+
 module.exports = router;
