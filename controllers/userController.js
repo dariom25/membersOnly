@@ -77,5 +77,5 @@ exports.logOutUserGet = (req, res, next) => {
 }
 
 exports.dashboardGet = asyncHandler(async(req, res, next) => {
-  res.render("dashboard");
+  res.render("dashboard", {user: req.user});
 })
