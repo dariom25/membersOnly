@@ -2,7 +2,7 @@ const User = require("../models/usermodel");
 const asyncHandler = require("express-async-handler");
 const { body, validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
-const passport = require("passport")
+const passport = require("passport");
 
 exports.createUserGet = asyncHandler(async (req, res, next) => {
   res.render("registration");
@@ -22,7 +22,11 @@ exports.createUserPost = [
     })
     .trim()
     .escape(),
-  body("password").isLength({ min: 1 }).withMessage("Password needs to be at least 1 character").trim().escape(),
+  body("password")
+    .isLength({ min: 1 })
+    .withMessage("Password needs to be at least 1 character")
+    .trim()
+    .escape(),
   body("cpassword")
     .custom((value, { req }) => {
       return value === req.body.password;
@@ -59,13 +63,13 @@ exports.successfullRegistrationGet = asyncHandler(async (req, res, next) => {
 });
 
 exports.logInUserGet = asyncHandler(async (req, res, next) => {
-  res.render("login")
-})
+  res.render("login");
+});
 
 exports.logInUserPost = passport.authenticate("local", {
   successRedirect: "dashboard",
-  failureRedirect: "login"
-})
+  failureRedirect: "login",
+});
 
 exports.logOutUserGet = (req, res, next) => {
   req.logout((err) => {
@@ -74,8 +78,12 @@ exports.logOutUserGet = (req, res, next) => {
     }
     res.redirect("/");
   });
-}
+};
 
-exports.dashboardGet = asyncHandler(async(req, res, next) => {
-  res.render("dashboard", {user: req.user});
-})
+exports.dashboardGet = asyncHandler(async (req, res, next) => {
+  if (req.isAuthenticated()) {
+    res.render("dashboard", { user: req.user });
+  }
+  res.redirect("login")
+});
+
