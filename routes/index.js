@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const userController = require("../controllers/userController");
-const connectEnsureLogin = require("connect-ensure-login");
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
@@ -20,7 +19,7 @@ router.post("/login", userController.logInUserPost);
 
 router.get("/log-out", userController.logOutUserGet);
 
-router.get("/dashboard", connectEnsureLogin.ensureLoggedIn(), userController.dashboardGet);
+router.get("/dashboard", userController.dashboardGet);
 
 router.post("/dashboard", userController.setMemberStatusPost)
 
