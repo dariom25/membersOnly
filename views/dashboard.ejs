@@ -6,8 +6,8 @@
     <title>Dashboard</title>
   </head>
   <body>
-    <h3>Welcome <%= user.firstName%>!</h3>
-    <% if (user.member) { %>
+    <h3>Welcome <%= currentUser.firstName%>!</h3>
+    <% if (currentUser.member) { %>
     <form action="" method="post" class="form">
       <label for="message">Your message:</label>
       <input
