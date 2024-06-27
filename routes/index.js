@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const userController = require("../controllers/userController");
+const connectEnsureLogin = require("connect-ensure-login");
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
@@ -13,13 +14,13 @@ router.post("/registration", userController.createUserPost);
 
 router.get("/registrationSuccess", userController.successfullRegistrationGet);
 
-router.get("/log-in", userController.logInUserGet);
+router.get("/login", userController.logInUserGet);
 
-router.post("/log-in", userController.logInUserPost);
+router.post("/login", userController.logInUserPost);
 
 router.get("/log-out", userController.logOutUserGet);
 
-router.get("/dashboard", userController.dashboardGet);
+router.get("/dashboard", connectEnsureLogin.ensureLoggedIn(), userController.dashboardGet);
 
 router.post("/dashboard", userController.setMemberStatusPost)
 
